@@ -7,7 +7,7 @@ const footerSections = [
       { label: "Features", href: "/features" },
       { label: "Pricing", href: "/pricing" },
       { label: "Sports", href: "/sports" },
-      { label: "Fuse Theme Builder", href: "/features" },
+      { label: "Fuse Theme Builder", href: "/features", badge: "New" },
       { label: "AI Graphics", href: "/features" },
     ],
   },
@@ -39,12 +39,44 @@ const footerSections = [
   },
 ];
 
+const socialLinks = [
+  {
+    label: "X (Twitter)",
+    href: "/",
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+      </svg>
+    ),
+  },
+  {
+    label: "LinkedIn",
+    href: "/",
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
+        <circle cx="4" cy="4" r="2"/>
+      </svg>
+    ),
+  },
+  {
+    label: "YouTube",
+    href: "/",
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+        <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0c0e12"/>
+      </svg>
+    ),
+  },
+];
+
 export default function Footer() {
   return (
     <footer
       style={{
-        borderTop: "1px solid rgba(255,255,255,0.08)",
-        backgroundColor: "#1a1d26",
+        borderTop: "1px solid #22262f",
+        backgroundColor: "#0c0e12",
       }}
       className="mt-20"
     >
@@ -61,9 +93,23 @@ export default function Footer() {
               </svg>
               <span>LIGR</span>
             </Link>
-            <p className="text-sm leading-relaxed" style={{ color: "#9ca3af" }}>
+            <p className="text-sm leading-relaxed mb-6" style={{ color: "#94979c" }}>
               Broadcast-quality sports production for every level of the game.
             </p>
+            {/* Social icons */}
+            <div className="flex items-center gap-3">
+              {socialLinks.map((s) => (
+                <Link
+                  key={s.label}
+                  href={s.href}
+                  aria-label={s.label}
+                  className="flex items-center justify-center w-9 h-9 rounded-lg transition-colors duration-150"
+                  style={{ color: "#94979c", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.07)" }}
+                >
+                  {s.icon}
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* Link columns */}
@@ -71,7 +117,7 @@ export default function Footer() {
             <div key={section.title}>
               <p
                 className="text-xs font-semibold tracking-widest mb-4"
-                style={{ color: "#6b7280" }}
+                style={{ color: "#94979c" }}
               >
                 {section.title}
               </p>
@@ -80,9 +126,18 @@ export default function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="footer-link text-sm transition-colors"
+                      className="footer-link inline-flex items-center gap-2 text-sm transition-colors"
+                      style={{ color: "#94979c" }}
                     >
                       {link.label}
+                      {"badge" in link && link.badge && (
+                        <span
+                          className="px-1.5 py-0.5 rounded text-xs font-bold"
+                          style={{ background: "rgba(255,80,78,0.15)", color: "#ff504e" }}
+                        >
+                          {link.badge}
+                        </span>
+                      )}
                     </Link>
                   </li>
                 ))}
@@ -94,8 +149,8 @@ export default function Footer() {
         <div
           className="mt-12 pt-8 text-sm"
           style={{
-            borderTop: "1px solid rgba(255,255,255,0.06)",
-            color: "#6b7280",
+            borderTop: "1px solid #22262f",
+            color: "#94979c",
           }}
         >
           © 2026 LIGR Systems Pty Ltd. All rights reserved.

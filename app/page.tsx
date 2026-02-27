@@ -67,10 +67,10 @@ const orgs = [
 const tickerItems = [...orgs, ...orgs];
 
 const stats = [
-  { value: "20+", label: "Sports Supported" },
-  { value: "4K",  label: "Max Resolution" },
-  { value: "10s", label: "Go Live Time" },
-  { value: "100%", label: "Cloud-Based" },
+  { value: "100K+", label: "Hours Broadcast" },
+  { value: "20+",   label: "Sports Supported" },
+  { value: "$20M+", label: "Sponsorship Revenue Driven" },
+  { value: "50+",   label: "Countries" },
 ];
 
 const claudeCheckItems = [
@@ -320,7 +320,7 @@ export default function HomePage() {
       <GSAPAnimations />
 
       {/* ═══ 1. HERO ═══════════════════════════════════════════════ */}
-      <section className="px-4 md:px-8 pt-6 pb-2 flex flex-col" style={{ minHeight: "max(calc(100vh - 64px), 960px)" }}>
+      <section className="px-4 md:px-8 pt-6 pb-2 flex flex-col" style={{ height: "calc(100vh - 64px)", minHeight: "700px" }}>
         <div className="section-card dot-grid-card overflow-hidden flex-1 flex flex-col">
           {/* Animated gradient glow */}
           <div
@@ -505,8 +505,8 @@ export default function HomePage() {
                 },
               ].map((s) => (
                 <div key={s.step} className="how-card p-6 flex flex-col h-full gsap-stagger-item">
-                  {/* Illustration — fixed height so all cards align */}
-                  <div style={{ height: "220px", overflow: "hidden", flexShrink: 0, marginBottom: "20px" }}>
+                  {/* Illustration */}
+                  <div style={{ flexShrink: 0, marginBottom: "20px" }}>
                     {s.illustration}
                   </div>
                   {/* Icon + step */}
@@ -528,16 +528,14 @@ export default function HomePage() {
 
       {/* ═══ 5. STATS ═══════════════════════════════════════════════ */}
       <section className="px-4 md:px-8 py-6">
-        <div className="section-card overflow-hidden">
-          <div className="relative z-10 py-10 px-8 md:px-12">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center gsap-stats">
-              {stats.map((s) => (
-                <div key={s.value} className="gsap-stat">
-                  <div className="text-5xl md:text-6xl font-extrabold mb-2" style={{ color: "#ff504e", letterSpacing: "-0.02em" }}>{s.value}</div>
-                  <div className="text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>{s.label}</div>
-                </div>
-              ))}
-            </div>
+        <div className="py-12 px-8 md:px-12" style={{ borderTop: "1px solid rgba(255,255,255,0.07)", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center gsap-stats">
+            {stats.map((s) => (
+              <div key={s.value} className="gsap-stat">
+                <div className="text-5xl md:text-6xl font-extrabold mb-2" style={{ color: "#ff504e", letterSpacing: "-0.02em" }}>{s.value}</div>
+                <div className="text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>{s.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

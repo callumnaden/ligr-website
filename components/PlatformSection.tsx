@@ -100,70 +100,65 @@ const loopItems = [...platformFeatures, ...platformFeatures];
 export default function PlatformSection() {
   return (
     <section className="px-4 md:px-8 py-6">
-      <div className="section-card dot-grid-card overflow-hidden">
-        {/* Animated gradient glow */}
-        <div
-          className="section-glow"
-          style={{
-            width: "600px", height: "600px",
-            top: "-100px", left: "-150px",
-            background: "radial-gradient(circle, rgba(255,80,78,0.15) 0%, transparent 65%)",
-          }}
-        />
-        <div
-          className="section-glow section-glow-alt"
-          style={{
-            width: "400px", height: "400px",
-            bottom: "-80px", right: "100px",
-            background: "radial-gradient(circle, rgba(255,120,60,0.1) 0%, transparent 65%)",
-          }}
-        />
-
-        <div className="relative z-10 flex gap-16 items-stretch" style={{ height: "620px" }}>
-          {/* Left: text (bottom-aligned) */}
-          <div className="flex flex-col justify-end p-10 md:p-12 max-w-[520px] flex-shrink-0">
-            <div>
-              <p className="text-sm font-semibold mb-3" style={{ color: "#ff504e" }}>Platform</p>
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4" style={{ color: "#ffffff", letterSpacing: "-0.02em" }}>
-                Everything you need to go live
-              </h2>
-              <p className="text-lg leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
-                A complete cloud production suite — from AI-generated graphics to fully automated broadcasts.
-              </p>
-            </div>
+      <div className="flex gap-10 items-stretch" style={{ height: "620px" }}>
+        {/* Left: text (bottom-aligned, plain — no card background) */}
+        <div className="flex flex-col justify-end pb-10 md:pb-12 max-w-[480px] flex-shrink-0">
+          <div>
+            <p className="text-sm font-semibold mb-3" style={{ color: "#ff504e" }}>Platform</p>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4" style={{ color: "#ffffff", letterSpacing: "-0.02em" }}>
+              Everything you need to go live
+            </h2>
+            <p className="text-lg leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
+              A complete cloud production suite — from AI-generated graphics to fully automated broadcasts.
+            </p>
           </div>
+        </div>
 
-          {/* Right: vertically looping feature cards */}
+        {/* Right: section-card with dot-grid + vertically looping feature cards */}
+        <div className="section-card dot-grid-card flex-1 relative overflow-hidden">
+          {/* Animated gradient glows */}
           <div
-            className="flex-1 relative overflow-hidden"
-            style={{ borderLeft: "1px solid rgba(255,255,255,0.06)" }}
-          >
-            {/* Top + bottom fade masks — colour matches the section-card bg */}
-            <div className="absolute top-0 left-0 right-0 h-28 z-20 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(27,29,36,1) 0%, transparent 100%)" }} />
-            <div className="absolute bottom-0 left-0 right-0 h-28 z-20 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(27,29,36,1) 0%, transparent 100%)" }} />
+            className="section-glow"
+            style={{
+              width: "500px", height: "500px",
+              top: "-80px", right: "-80px",
+              background: "radial-gradient(circle, rgba(255,80,78,0.15) 0%, transparent 65%)",
+            }}
+          />
+          <div
+            className="section-glow section-glow-alt"
+            style={{
+              width: "350px", height: "350px",
+              bottom: "-60px", left: "50px",
+              background: "radial-gradient(circle, rgba(255,120,60,0.1) 0%, transparent 65%)",
+            }}
+          />
 
-            {/* Scrolling grid */}
-            <div className="card-loop grid grid-cols-2 gap-3 p-6 pt-8">
-              {loopItems.map((feat, i) => {
-                const Icon = feat.icon;
-                return (
-                  <div key={i} className="feature-card p-6">
-                    <div className="icon-box mb-4" style={{ color: "#ff504e" }}>
-                      <Icon />
-                    </div>
-                    <h3 className="text-base font-semibold mb-2 text-white">{feat.title}</h3>
-                    <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.5)" }}>{feat.desc}</p>
-                    <Link
-                      href={feat.href}
-                      className="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors duration-150"
-                      style={{ color: "#ff504e" }}
-                    >
-                      Learn more <Icons.ArrowRight />
-                    </Link>
+          {/* Top + bottom fade masks */}
+          <div className="absolute top-0 left-0 right-0 h-28 z-20 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(27,29,36,1) 0%, transparent 100%)" }} />
+          <div className="absolute bottom-0 left-0 right-0 h-28 z-20 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(27,29,36,1) 0%, transparent 100%)" }} />
+
+          {/* Scrolling grid */}
+          <div className="card-loop grid grid-cols-2 gap-3 p-6 pt-8 relative z-10">
+            {loopItems.map((feat, i) => {
+              const Icon = feat.icon;
+              return (
+                <div key={i} className="feature-card p-6">
+                  <div className="icon-box mb-4" style={{ color: "#ff504e" }}>
+                    <Icon />
                   </div>
-                );
-              })}
-            </div>
+                  <h3 className="text-base font-semibold mb-2 text-white">{feat.title}</h3>
+                  <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.5)" }}>{feat.desc}</p>
+                  <Link
+                    href={feat.href}
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors duration-150"
+                    style={{ color: "#ff504e" }}
+                  >
+                    Learn more <Icons.ArrowRight />
+                  </Link>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

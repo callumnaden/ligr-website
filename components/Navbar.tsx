@@ -47,7 +47,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative px-4 py-2 text-sm font-medium nav-link ${isActive ? "active" : ""}`}
+                className={`relative px-4 py-2 text-base font-medium nav-link ${isActive ? "active" : ""}`}
               >
                 {link.label}
                 {isActive && (
@@ -61,14 +61,23 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* CTA */}
-        <Link
-          href="/contact"
-          className="px-5 py-2 rounded-lg text-sm font-bold text-white get-started-btn"
-          style={{ backgroundColor: "#ff504e" }}
-        >
-          GET STARTED
-        </Link>
+        {/* CTAs */}
+        <div className="hidden md:flex items-center gap-3">
+          <Link
+            href="/features"
+            className="px-5 py-2 rounded-lg text-sm font-semibold transition-colors duration-150"
+            style={{ color: "rgba(255,255,255,0.75)", border: "1px solid rgba(255,255,255,0.12)", background: "rgba(255,255,255,0.05)" }}
+          >
+            See it in action
+          </Link>
+          <Link
+            href="/contact"
+            className="px-5 py-2 rounded-lg text-sm font-bold text-white get-started-btn"
+            style={{ backgroundColor: "#ff504e" }}
+          >
+            Get started
+          </Link>
+        </div>
       </div>
     </nav>
   );
