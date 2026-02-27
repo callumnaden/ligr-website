@@ -423,3 +423,30 @@ select option { background-color: #22252f; }
   justify-content: center;
   flex-shrink: 0;
 }
+
+/* ─── GSAP animation initial states ─── */
+/* Elements below fold start invisible; GSAP animates them in */
+.gsap-fade {
+  opacity: 0;
+  transform: translateY(40px);
+  will-change: opacity, transform;
+}
+.gsap-stagger-item {
+  opacity: 0;
+  transform: translateY(30px);
+  will-change: opacity, transform;
+}
+.gsap-stat {
+  opacity: 0;
+  transform: translateY(24px) scale(0.92);
+  will-change: opacity, transform;
+}
+/* Hero elements — hidden on load, animated in via heroTl */
+.hero-badge,
+.hero-h1,
+.hero-ctas,
+.hero-sub,
+.hero-illustration {
+  opacity: 0;
+  will-change: opacity, transform;
+}

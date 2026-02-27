@@ -119,7 +119,7 @@ export default function PlatformSection() {
           }}
         />
 
-        <div className="relative z-10 flex gap-16 items-stretch min-h-[640px]">
+        <div className="relative z-10 flex gap-16 items-stretch" style={{ height: "620px" }}>
           {/* Left: text (bottom-aligned) */}
           <div className="flex flex-col justify-end p-10 md:p-12 max-w-[520px] flex-shrink-0">
             <div>
@@ -138,9 +138,9 @@ export default function PlatformSection() {
             className="flex-1 relative overflow-hidden"
             style={{ borderLeft: "1px solid rgba(255,255,255,0.06)" }}
           >
-            {/* Top + bottom fade masks */}
-            <div className="absolute top-0 left-0 right-0 h-24 z-20 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(29,32,42,0.95), transparent)" }} />
-            <div className="absolute bottom-0 left-0 right-0 h-24 z-20 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(29,32,42,0.95), transparent)" }} />
+            {/* Top + bottom fade masks — colour matches the section-card bg */}
+            <div className="absolute top-0 left-0 right-0 h-28 z-20 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(27,29,36,1) 0%, transparent 100%)" }} />
+            <div className="absolute bottom-0 left-0 right-0 h-28 z-20 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(27,29,36,1) 0%, transparent 100%)" }} />
 
             {/* Scrolling grid */}
             <div className="card-loop grid grid-cols-2 gap-3 p-6 pt-8">

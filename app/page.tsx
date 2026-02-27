@@ -1,5 +1,6 @@
 import Link from "next/link";
 import PlatformSection from "@/components/PlatformSection";
+import GSAPAnimations from "@/components/GSAPAnimations";
 
 // ─── Inline SVG icons ───────────────────────────────────────────────
 function IconPalette() {
@@ -315,11 +316,12 @@ function FuseDetailIllustration() {
 // ─── Page component ──────────────────────────────────────────────────
 export default function HomePage() {
   return (
-    <main className="pt-16 overflow-hidden" style={{ background: "#15171e" }}>
+    <main className="pt-16 overflow-x-hidden" style={{ background: "#15171e" }}>
+      <GSAPAnimations />
 
       {/* ═══ 1. HERO ═══════════════════════════════════════════════ */}
-      <section className="px-4 md:px-8 pt-6 pb-2">
-        <div className="section-card dot-grid-card overflow-hidden" style={{ minHeight: "780px" }}>
+      <section className="px-4 md:px-8 pt-6 pb-2 flex flex-col" style={{ minHeight: "max(calc(100vh - 64px), 960px)" }}>
+        <div className="section-card dot-grid-card overflow-hidden flex-1 flex flex-col">
           {/* Animated gradient glow */}
           <div
             className="section-glow"
@@ -338,11 +340,11 @@ export default function HomePage() {
             }}
           />
 
-          <div className="relative z-10 flex flex-col justify-between h-full p-8 md:p-12" style={{ minHeight: "780px" }}>
+          <div className="relative z-10 flex flex-col justify-between flex-1 p-8 md:p-12">
             {/* Top: badge + heading + CTAs */}
             <div className="max-w-3xl">
               {/* Badge */}
-              <div className="inline-flex items-center gap-3 mb-8 px-3 py-1.5 rounded-xl" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}>
+              <div className="hero-badge inline-flex items-center gap-3 mb-8 px-3 py-1.5 rounded-xl" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}>
                 <span className="px-2 py-0.5 rounded-md text-xs font-bold text-white" style={{ background: "#ff504e" }}>New!</span>
                 <span className="text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>Now with AI Graphics &amp; Fuse</span>
                 <IconArrowRight />
@@ -350,7 +352,7 @@ export default function HomePage() {
 
               {/* Heading */}
               <h1
-                className="font-bold leading-none mb-10 text-white"
+                className="hero-h1 font-bold leading-none mb-10 text-white"
                 style={{ fontSize: "clamp(48px, 7vw, 88px)", letterSpacing: "-0.03em", lineHeight: "1.0" }}
               >
                 Broadcast-quality sports
@@ -358,10 +360,10 @@ export default function HomePage() {
               </h1>
 
               {/* CTAs */}
-              <div className="flex flex-wrap gap-4">
+              <div className="hero-ctas flex flex-wrap gap-4">
                 <Link
                   href="/features"
-                  className="inline-flex items-center gap-2.5 px-5 py-3 rounded-xl font-semibold text-base transition-all duration-200"
+                  className="gsap-btn-hover inline-flex items-center gap-2.5 px-5 py-3 rounded-xl font-semibold text-base transition-all duration-200"
                   style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.14)", color: "#ffffff" }}
                 >
                   <IconPlayCircle />
@@ -369,7 +371,7 @@ export default function HomePage() {
                 </Link>
                 <Link
                   href="/contact"
-                  className="btn-primary inline-flex items-center gap-2.5 px-5 py-3 rounded-xl font-semibold text-base text-white"
+                  className="gsap-btn-hover btn-primary inline-flex items-center gap-2.5 px-5 py-3 rounded-xl font-semibold text-base text-white"
                 >
                   Get started
                 </Link>
@@ -380,7 +382,7 @@ export default function HomePage() {
             <div className="flex items-end justify-between gap-8 mt-16">
               {/* Subtitle */}
               <p
-                className="max-w-md text-lg leading-relaxed"
+                className="hero-sub max-w-md text-lg leading-relaxed"
                 style={{ color: "rgba(255,255,255,0.5)", fontSize: "1.1rem" }}
               >
                 From grassroots to elite — LIGR gives you AI-powered graphics,
@@ -390,7 +392,7 @@ export default function HomePage() {
 
               {/* Video player illustration */}
               <div
-                className="flex-shrink-0 rounded-2xl overflow-hidden"
+                className="hero-illustration flex-shrink-0 rounded-2xl overflow-hidden"
                 style={{
                   width: "440px",
                   border: "1px solid rgba(255,255,255,0.1)",
@@ -430,37 +432,35 @@ export default function HomePage() {
       </section>
 
       {/* ═══ 2. TRUSTED BY TICKER ═══════════════════════════════════ */}
-      <section className="px-4 md:px-8 py-5">
-        <div className="section-card overflow-hidden py-7">
-          <div className="relative z-10">
-            <p className="text-center text-xs font-semibold tracking-widest mb-6" style={{ color: "rgba(255,255,255,0.3)", letterSpacing: "0.15em" }}>
-              TRUSTED BY LEADING ORGANISATIONS
-            </p>
-            {/* Continuous ticker */}
-            <div className="overflow-hidden relative">
-              <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: "linear-gradient(to right, rgba(21,23,30,0.95), transparent)" }} />
-              <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: "linear-gradient(to left, rgba(21,23,30,0.95), transparent)" }} />
-              <div className="ticker-track">
-                {tickerItems.map((org, i) => (
-                  <span
-                    key={i}
-                    className="whitespace-nowrap font-bold text-base mx-10"
-                    style={{ color: "rgba(255,255,255,0.5)", fontSize: "1rem" }}
-                  >
-                    {org}
-                  </span>
-                ))}
-              </div>
-            </div>
+      <section className="px-4 md:px-8 py-8 gsap-fade">
+        <p className="text-center text-xs font-semibold tracking-widest mb-6" style={{ color: "rgba(255,255,255,0.3)", letterSpacing: "0.15em" }}>
+          TRUSTED BY LEADING ORGANISATIONS
+        </p>
+        {/* Continuous ticker */}
+        <div className="overflow-hidden relative">
+          <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: "linear-gradient(to right, rgba(21,23,30,0.98), transparent)" }} />
+          <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: "linear-gradient(to left, rgba(21,23,30,0.98), transparent)" }} />
+          <div className="ticker-track">
+            {tickerItems.map((org, i) => (
+              <span
+                key={i}
+                className="whitespace-nowrap font-bold text-base mx-10"
+                style={{ color: "rgba(255,255,255,0.45)", fontSize: "1rem" }}
+              >
+                {org}
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ═══ 3. PLATFORM (vertical card loop) ══════════════════════ */}
-      <PlatformSection />
+      <div className="gsap-fade">
+        <PlatformSection />
+      </div>
 
       {/* ═══ 4. HOW IT WORKS ════════════════════════════════════════ */}
-      <section className="px-4 md:px-8 py-6">
+      <section className="px-4 md:px-8 py-6 gsap-fade">
         <div className="section-card dot-grid-card overflow-hidden">
           {/* Animated glow */}
           <div
@@ -480,7 +480,7 @@ export default function HomePage() {
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-6 items-stretch gsap-stagger">
               {[
                 {
                   step: "01",
@@ -504,16 +504,18 @@ export default function HomePage() {
                   illustration: <BroadcastIllustration />,
                 },
               ].map((s) => (
-                <div key={s.step} className="how-card p-6 flex flex-col gap-5">
-                  {/* Illustration */}
-                  <div>{s.illustration}</div>
+                <div key={s.step} className="how-card p-6 flex flex-col h-full gsap-stagger-item">
+                  {/* Illustration — fixed height so all cards align */}
+                  <div style={{ height: "220px", overflow: "hidden", flexShrink: 0, marginBottom: "20px" }}>
+                    {s.illustration}
+                  </div>
                   {/* Icon + step */}
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 mb-4">
                     <div className="icon-box" style={{ color: "#ff504e" }}>{s.icon}</div>
                     <span className="text-2xl font-bold" style={{ color: "rgba(255,255,255,0.12)", fontVariantNumeric: "tabular-nums" }}>{s.step}</span>
                   </div>
-                  {/* Text */}
-                  <div>
+                  {/* Text fills remaining space */}
+                  <div className="flex-1">
                     <h3 className="text-lg font-semibold text-white mb-2">{s.title}</h3>
                     <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{s.desc}</p>
                   </div>
@@ -528,9 +530,9 @@ export default function HomePage() {
       <section className="px-4 md:px-8 py-6">
         <div className="section-card overflow-hidden">
           <div className="relative z-10 py-10 px-8 md:px-12">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center gsap-stats">
               {stats.map((s) => (
-                <div key={s.value}>
+                <div key={s.value} className="gsap-stat">
                   <div className="text-5xl md:text-6xl font-extrabold mb-2" style={{ color: "#ff504e", letterSpacing: "-0.02em" }}>{s.value}</div>
                   <div className="text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>{s.label}</div>
                 </div>
@@ -541,46 +543,38 @@ export default function HomePage() {
       </section>
 
       {/* ═══ 6a. POWERED BY CLAUDE AI ═══════════════════════════════ */}
-      <section className="px-4 md:px-8 py-6">
-        <div className="section-card dot-grid-card overflow-hidden">
-          <div
-            className="section-glow"
-            style={{
-              width: "600px", height: "600px",
-              top: "-100px", right: "-100px",
-              background: "radial-gradient(circle, rgba(255,80,78,0.14) 0%, transparent 65%)",
-            }}
-          />
-          <div className="relative z-10 flex flex-col md:flex-row gap-12 items-center p-8 md:p-12">
-            {/* Left text */}
-            <div className="flex-1 max-w-xl">
-              <p className="text-sm font-semibold mb-3" style={{ color: "#ff504e" }}>Powered by Claude AI</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-5" style={{ letterSpacing: "-0.02em" }}>
-                AI Graphics that think like a designer.
-              </h2>
-              <p className="text-lg leading-relaxed mb-7" style={{ color: "rgba(255,255,255,0.5)" }}>
-                Describe your vision in plain English — &ldquo;a modern scoreboard with neon accents for basketball&rdquo; — and watch LIGR generate broadcast-ready overlays in seconds. Powered by Anthropic&apos;s Claude, our AI understands sports context, brand guidelines, and design best practices.
-              </p>
-              <ul className="space-y-3 mb-7">
-                {claudeCheckItems.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <div className="check-icon mt-0.5" style={{ color: "#ff504e" }}>
-                      <IconCheckCircle />
-                    </div>
-                    <span className="text-base" style={{ color: "rgba(255,255,255,0.6)" }}>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/features"
-                className="inline-flex items-center gap-2 font-semibold transition-colors duration-150"
-                style={{ color: "#ff504e" }}
-              >
-                Explore AI Graphics <IconArrowRight />
-              </Link>
-            </div>
-            {/* Right: coded illustration */}
-            <div className="flex-1 w-full max-w-lg">
+      <section className="px-4 md:px-8 py-16 gsap-feature-section">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center">
+          {/* Left text — 50% */}
+          <div className="w-full md:w-1/2 gsap-feature-text">
+            <p className="text-sm font-semibold mb-3" style={{ color: "#ff504e" }}>Powered by Claude AI</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-5" style={{ letterSpacing: "-0.02em" }}>
+              AI Graphics that think like a designer.
+            </h2>
+            <p className="text-lg leading-relaxed mb-7" style={{ color: "rgba(255,255,255,0.5)" }}>
+              Describe your vision in plain English — &ldquo;a modern scoreboard with neon accents for basketball&rdquo; — and watch LIGR generate broadcast-ready overlays in seconds. Powered by Anthropic&apos;s Claude, our AI understands sports context, brand guidelines, and design best practices.
+            </p>
+            <ul className="space-y-3 mb-7">
+              {claudeCheckItems.map((item) => (
+                <li key={item} className="gsap-check-item flex items-start gap-3" style={{ cursor: "default" }}>
+                  <div className="check-icon mt-0.5 flex-shrink-0" style={{ color: "#ff504e" }}>
+                    <IconCheckCircle />
+                  </div>
+                  <span className="text-base" style={{ color: "rgba(255,255,255,0.6)" }}>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="/features"
+              className="inline-flex items-center gap-2 font-semibold transition-colors duration-150"
+              style={{ color: "#ff504e" }}
+            >
+              Explore AI Graphics <IconArrowRight />
+            </Link>
+          </div>
+          {/* Right: coded illustration — 50%, centred */}
+          <div className="w-full md:w-1/2 flex items-center justify-center gsap-feature-image">
+            <div className="w-full max-w-lg">
               <AIGraphicsIllustration />
             </div>
           </div>
@@ -588,46 +582,38 @@ export default function HomePage() {
       </section>
 
       {/* ═══ 6b. AI THEME BUILDER (FUSE) ════════════════════════════ */}
-      <section className="px-4 md:px-8 py-6">
-        <div className="section-card dot-grid-card overflow-hidden">
-          <div
-            className="section-glow section-glow-alt"
-            style={{
-              width: "600px", height: "600px",
-              top: "-100px", left: "-100px",
-              background: "radial-gradient(circle, rgba(255,80,78,0.12) 0%, transparent 65%)",
-            }}
-          />
-          <div className="relative z-10 flex flex-col md:flex-row-reverse gap-12 items-center p-8 md:p-12">
-            {/* Right text */}
-            <div className="flex-1 max-w-xl">
-              <p className="text-sm font-semibold mb-3" style={{ color: "#ff504e" }}>AI Theme Builder</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-5" style={{ letterSpacing: "-0.02em" }}>
-                Meet Fuse.<br />Design without limits.
-              </h2>
-              <p className="text-lg leading-relaxed mb-7" style={{ color: "rgba(255,255,255,0.5)" }}>
-                Fuse is LIGR&apos;s advanced visual theme builder. Drag and drop components, bind live data, set brand colours, and preview everything in real time. No code, no export, no waiting — go straight from design to live broadcast.
-              </p>
-              <ul className="space-y-3 mb-7">
-                {fuseCheckItems.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <div className="check-icon mt-0.5" style={{ color: "#ff504e" }}>
-                      <IconCheckCircle />
-                    </div>
-                    <span className="text-base" style={{ color: "rgba(255,255,255,0.6)" }}>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/features"
-                className="inline-flex items-center gap-2 font-semibold transition-colors duration-150"
-                style={{ color: "#ff504e" }}
-              >
-                Explore Fuse <IconArrowRight />
-              </Link>
-            </div>
-            {/* Left: coded illustration */}
-            <div className="flex-1 w-full max-w-lg" style={{ minHeight: "340px" }}>
+      <section className="px-4 md:px-8 py-16 gsap-feature-section">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row-reverse gap-16 items-center">
+          {/* Right text — 50% */}
+          <div className="w-full md:w-1/2 gsap-feature-text">
+            <p className="text-sm font-semibold mb-3" style={{ color: "#ff504e" }}>AI Theme Builder</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-5" style={{ letterSpacing: "-0.02em" }}>
+              Meet Fuse.<br />Design without limits.
+            </h2>
+            <p className="text-lg leading-relaxed mb-7" style={{ color: "rgba(255,255,255,0.5)" }}>
+              Fuse is LIGR&apos;s advanced visual theme builder. Drag and drop components, bind live data, set brand colours, and preview everything in real time. No code, no export, no waiting — go straight from design to live broadcast.
+            </p>
+            <ul className="space-y-3 mb-7">
+              {fuseCheckItems.map((item) => (
+                <li key={item} className="gsap-check-item flex items-start gap-3" style={{ cursor: "default" }}>
+                  <div className="check-icon mt-0.5 flex-shrink-0" style={{ color: "#ff504e" }}>
+                    <IconCheckCircle />
+                  </div>
+                  <span className="text-base" style={{ color: "rgba(255,255,255,0.6)" }}>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="/features"
+              className="inline-flex items-center gap-2 font-semibold transition-colors duration-150"
+              style={{ color: "#ff504e" }}
+            >
+              Explore Fuse <IconArrowRight />
+            </Link>
+          </div>
+          {/* Left: coded illustration — 50%, centred */}
+          <div className="w-full md:w-1/2 flex items-center justify-center gsap-feature-image">
+            <div className="w-full max-w-lg">
               <FuseDetailIllustration />
             </div>
           </div>
@@ -635,7 +621,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══ 7. CTA ══════════════════════════════════════════════════ */}
-      <section className="px-4 md:px-8 py-6 pb-10">
+      <section className="px-4 md:px-8 py-6 pb-10 gsap-fade">
         <div className="section-card dot-grid-card overflow-hidden">
           <div
             className="section-glow"
@@ -656,14 +642,14 @@ export default function HomePage() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/pricing"
-                  className="inline-flex items-center gap-2.5 px-5 py-3 rounded-xl font-semibold text-base transition-all duration-200"
+                  className="gsap-btn-hover inline-flex items-center gap-2.5 px-5 py-3 rounded-xl font-semibold text-base transition-all duration-200"
                   style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.14)", color: "#ffffff" }}
                 >
                   View Pricing
                 </Link>
                 <Link
                   href="/contact"
-                  className="btn-primary inline-flex items-center gap-2.5 px-5 py-3 rounded-xl font-semibold text-base text-white"
+                  className="gsap-btn-hover btn-primary inline-flex items-center gap-2.5 px-5 py-3 rounded-xl font-semibold text-base text-white"
                 >
                   Start for free
                 </Link>
