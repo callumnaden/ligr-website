@@ -239,3 +239,77 @@ select option { background-color: #22252f; }
 .marquee-track:hover {
   animation-play-state: paused;
 }
+
+/* ─── Line grid (ZeroDrift-style) ─── */
+.line-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* ─── Animated gradient mesh blobs ─── */
+@keyframes mesh-drift-1 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  25%       { transform: translate(50px, -70px) scale(1.08); }
+  50%       { transform: translate(-40px, 50px) scale(0.94); }
+  75%       { transform: translate(70px, 30px) scale(1.04); }
+}
+@keyframes mesh-drift-2 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33%       { transform: translate(-60px, 40px) scale(1.1); }
+  66%       { transform: translate(50px, -30px) scale(0.92); }
+}
+@keyframes mesh-drift-3 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  50%       { transform: translate(40px, 60px) scale(1.06); }
+}
+.mesh-blob-1 { animation: mesh-drift-1 16s ease-in-out infinite; }
+.mesh-blob-2 { animation: mesh-drift-2 12s ease-in-out infinite; }
+.mesh-blob-3 { animation: mesh-drift-3 20s ease-in-out infinite; }
+
+/* ─── Feature tab sticky nav ─── */
+.feature-tab-nav {
+  position: sticky;
+  top: 64px;
+  z-index: 30;
+  background: rgba(29, 32, 42, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ─── Split visual product card ─── */
+.split-visual {
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 4/3;
+  background: rgba(255,255,255,0.02);
+}
+
+/* ─── Highlight cards (3-col) ─── */
+.highlight-card {
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.07);
+  overflow: hidden;
+  position: relative;
+  background: rgba(255,255,255,0.025);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.highlight-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,80,78,0.2);
+  box-shadow: 0 12px 40px rgba(255,80,78,0.1);
+}
+
+/* ─── Full-bleed CTA section ─── */
+.cta-bleed {
+  background: linear-gradient(
+    135deg,
+    rgba(255,80,78,0.18) 0%,
+    rgba(29,32,42,1) 45%,
+    rgba(29,32,42,1) 100%
+  );
+}
