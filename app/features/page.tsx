@@ -108,7 +108,7 @@ const features = [
 
 export default function FeaturesPage() {
   return (
-    <main className="pt-16 overflow-hidden">
+    <main className="pt-[92px] overflow-hidden">
       {/* Hero */}
       <section className="relative text-center px-6 py-32 overflow-hidden">
         <div className="dot-grid absolute inset-0 pointer-events-none" />

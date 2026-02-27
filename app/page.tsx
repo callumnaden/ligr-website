@@ -316,11 +316,11 @@ function FuseDetailIllustration() {
 // ─── Page component ──────────────────────────────────────────────────
 export default function HomePage() {
   return (
-    <main className="pt-16 overflow-x-hidden" style={{ background: "#15171e" }}>
+    <main className="pt-[92px] overflow-x-hidden" style={{ background: "#15171e" }}>
       <GSAPAnimations />
 
       {/* ═══ 1. HERO ═══════════════════════════════════════════════ */}
-      <section className="px-4 md:px-8 pt-6 pb-2 flex flex-col" style={{ height: "calc(100vh - 64px)", minHeight: "700px" }}>
+      <section className="px-4 md:px-8 pt-6 pb-12 flex flex-col" style={{ minHeight: "calc(100vh - 92px)" }}>
         <div className="section-card dot-grid-card overflow-hidden flex-1 flex flex-col">
           {/* Animated gradient glow */}
           <div
@@ -505,17 +505,16 @@ export default function HomePage() {
                 },
               ].map((s) => (
                 <div key={s.step} className="how-card p-6 flex flex-col h-full gsap-stagger-item">
-                  {/* Illustration */}
-                  <div style={{ flexShrink: 0, marginBottom: "20px" }}>
+                  {/* Illustration — flex-1 so all three are equal height with no clipping */}
+                  <div className="flex-1 mb-5" style={{ minHeight: "200px" }}>
                     {s.illustration}
                   </div>
-                  {/* Icon + step */}
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="icon-box" style={{ color: "#ff504e" }}>{s.icon}</div>
-                    <span className="text-2xl font-bold" style={{ color: "rgba(255,255,255,0.12)", fontVariantNumeric: "tabular-nums" }}>{s.step}</span>
-                  </div>
-                  {/* Text fills remaining space */}
-                  <div className="flex-1">
+                  {/* Icon + step + text — fixed at bottom */}
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="icon-box" style={{ color: "#ff504e" }}>{s.icon}</div>
+                      <span className="text-2xl font-bold" style={{ color: "rgba(255,255,255,0.12)", fontVariantNumeric: "tabular-nums" }}>{s.step}</span>
+                    </div>
                     <h3 className="text-lg font-semibold text-white mb-2">{s.title}</h3>
                     <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{s.desc}</p>
                   </div>
